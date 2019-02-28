@@ -1,37 +1,77 @@
-import _Array$from from 'babel-runtime/core-js/array/from';
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+'use strict';
 
-// Material UI
-import Paper from 'material-ui/Paper/Paper';
-import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-// D2
-import { config } from 'd2';
+var _from = require('babel-runtime/core-js/array/from');
 
-// D2-UI
-import { CircularProgress } from '@dhis2/d2-ui-core';
+var _from2 = _interopRequireDefault(_from);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Paper = require('material-ui/Paper/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _RaisedButton = require('material-ui/RaisedButton/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _d = require('d2');
+
+var _d2UiCore = require('@dhis2/d2-ui-core');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // TODO: TOAST!
 // TODO: Undo support (in TOAST?)
 
-config.i18n.strings.add('selected');
-config.i18n.strings.add('assign_all');
-config.i18n.strings.add('remove_all');
-config.i18n.strings.add('hidden_by_filters');
+// D2
+
+
+// Material UI
+_d.config.i18n.strings.add('selected');
+
+// D2-UI
+
+_d.config.i18n.strings.add('assign_all');
+_d.config.i18n.strings.add('remove_all');
+_d.config.i18n.strings.add('hidden_by_filters');
 
 var GroupEditor = function (_Component) {
-    _inherits(GroupEditor, _Component);
+    (0, _inherits3.default)(GroupEditor, _Component);
 
     function GroupEditor(props, context) {
-        _classCallCheck(this, GroupEditor);
+        (0, _classCallCheck3.default)(this, GroupEditor);
 
-        var _this = _possibleConstructorReturn(this, (GroupEditor.__proto__ || _Object$getPrototypeOf(GroupEditor)).call(this, props, context));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (GroupEditor.__proto__ || (0, _getPrototypeOf2.default)(GroupEditor)).call(this, props, context));
 
         _this.state = {
             // Number of items selected in the left/right columns
@@ -107,7 +147,7 @@ var GroupEditor = function (_Component) {
         return _this;
     }
 
-    _createClass(GroupEditor, [{
+    (0, _createClass3.default)(GroupEditor, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
@@ -175,7 +215,7 @@ var GroupEditor = function (_Component) {
     }, {
         key: 'getAllItems',
         value: function getAllItems() {
-            return this.getItemStoreIsCollection() ? _Array$from(this.props.itemStore.state.values()).map(function (item) {
+            return this.getItemStoreIsCollection() ? (0, _from2.default)(this.props.itemStore.state.values()).map(function (item) {
                 return { value: item.id, text: item.name };
             }) : this.props.itemStore.state || [];
         }
@@ -405,21 +445,21 @@ var GroupEditor = function (_Component) {
                 return _this6.getSelectedCount() > 0 ? _this6.getSelectedCount() + ' ' + _this6.getTranslation('selected') : '';
             };
 
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
                 { style: styles.container },
-                React.createElement(
+                _react2.default.createElement(
                     'div',
                     { style: styles.left },
-                    React.createElement(
-                        Paper,
+                    _react2.default.createElement(
+                        _Paper2.default,
                         { style: styles.paper },
-                        React.createElement(
+                        _react2.default.createElement(
                             'div',
                             { style: styles.hidden },
                             hiddenLabel(this.getAvailableItemsFilterCount())
                         ),
-                        React.createElement(
+                        _react2.default.createElement(
                             'select',
                             {
                                 multiple: true,
@@ -430,7 +470,7 @@ var GroupEditor = function (_Component) {
                                 }
                             },
                             this.getAvailableItemsFiltered().map(function (item) {
-                                return React.createElement(
+                                return _react2.default.createElement(
                                     'option',
                                     {
                                         key: item.value,
@@ -443,7 +483,7 @@ var GroupEditor = function (_Component) {
                             })
                         )
                     ),
-                    React.createElement(RaisedButton, {
+                    _react2.default.createElement(_RaisedButton2.default, {
                         label: this.getTranslation('assign_all') + ' ' + (this.getAvailableItemsUnfilteredCount() === 0 ? '' : this.getAvailableItemsUnfilteredCount()) + ' \u2192',
                         disabled: this.state.loading || this.getAvailableItemsUnfilteredCount() === 0,
                         onClick: this.onAssignAll,
@@ -451,46 +491,46 @@ var GroupEditor = function (_Component) {
                         secondary: true
                     })
                 ),
-                React.createElement(
+                _react2.default.createElement(
                     'div',
                     { style: styles.middle },
-                    React.createElement(
+                    _react2.default.createElement(
                         'div',
                         { style: styles.selected },
                         selectedLabel()
                     ),
-                    React.createElement(RaisedButton, {
+                    _react2.default.createElement(_RaisedButton2.default, {
                         label: '\u2192',
                         secondary: true,
                         onClick: this.onAssignItems,
                         style: styles.buttons,
                         disabled: this.state.loading || this.state.selectedLeft === 0
                     }),
-                    React.createElement(RaisedButton, {
+                    _react2.default.createElement(_RaisedButton2.default, {
                         label: '\u2190',
                         secondary: true,
                         onClick: this.onRemoveItems,
                         style: styles.buttons,
                         disabled: this.state.loading || this.state.selectedRight === 0
                     }),
-                    React.createElement(
+                    _react2.default.createElement(
                         'div',
                         { style: styles.status },
-                        this.state.loading ? React.createElement(CircularProgress, { small: true, style: { width: 60, height: 60 } }) : undefined
+                        this.state.loading ? _react2.default.createElement(_d2UiCore.CircularProgress, { small: true, style: { width: 60, height: 60 } }) : undefined
                     )
                 ),
-                React.createElement(
+                _react2.default.createElement(
                     'div',
                     { style: styles.right },
-                    React.createElement(
-                        Paper,
+                    _react2.default.createElement(
+                        _Paper2.default,
                         { style: styles.paper },
-                        React.createElement(
+                        _react2.default.createElement(
                             'div',
                             { style: styles.hidden },
                             hiddenLabel(this.getAssignedItemsFilterCount())
                         ),
-                        React.createElement(
+                        _react2.default.createElement(
                             'select',
                             {
                                 multiple: true,
@@ -501,7 +541,7 @@ var GroupEditor = function (_Component) {
                                 }
                             },
                             this.getAssignedItemsFiltered().sort(this.byAssignedItemsOrder).map(function (item) {
-                                return React.createElement(
+                                return _react2.default.createElement(
                                     'option',
                                     {
                                         key: item.value,
@@ -514,7 +554,7 @@ var GroupEditor = function (_Component) {
                             })
                         )
                     ),
-                    React.createElement(RaisedButton, {
+                    _react2.default.createElement(_RaisedButton2.default, {
                         label: '\u2190 ' + this.getTranslation('remove_all') + ' ' + (this.getAssignedItemsUnfilteredCount() > 0 ? this.getAssignedItemsUnfilteredCount() : ''),
                         style: { float: 'right', marginTop: '1rem' },
                         disabled: this.state.loading || this.getAssignedItemsUnfilteredCount() === 0,
@@ -525,44 +565,43 @@ var GroupEditor = function (_Component) {
             );
         }
     }]);
-
     return GroupEditor;
-}(Component);
+}(_react.Component);
 
-export default GroupEditor;
+exports.default = GroupEditor;
 
 
 GroupEditor.propTypes = {
     // itemStore: d2-ui store containing all available items, either as a D2 ModelCollection,
     // or an array on the following format: [{value: 1, text: '1'}, {value: 2, text: '2'}, ...]
-    itemStore: PropTypes.object.isRequired,
+    itemStore: _propTypes2.default.object.isRequired,
 
     // assignedItemStore: d2-ui store containing all items assigned to the current group, either
     // as a D2 ModelCollectionProperty or an array of ID's that match values in the itemStore
-    assignedItemStore: PropTypes.object.isRequired,
+    assignedItemStore: _propTypes2.default.object.isRequired,
 
     // filterText: A string that will be used to filter items in both columns
-    filterText: PropTypes.string,
+    filterText: _propTypes2.default.string,
 
     // Note: Callbacks should return a promise that will resolve when the operation succeeds
     // and is rejected when it fails. The component will be in a loading state until the promise
     // resolves or is rejected.
 
     // assign items callback, called with an array of values to be assigned to the group
-    onAssignItems: PropTypes.func.isRequired,
+    onAssignItems: _propTypes2.default.func.isRequired,
 
     // remove items callback, called with an array of values to be removed from the group
-    onRemoveItems: PropTypes.func.isRequired,
+    onRemoveItems: _propTypes2.default.func.isRequired,
 
     // remove items callback, called with an array of values to be removed from the group
-    onMoveItems: PropTypes.func,
+    onMoveItems: _propTypes2.default.func,
 
     // The height of the component, defaults to 500px
-    height: PropTypes.number
+    height: _propTypes2.default.number
 };
 
 GroupEditor.contextTypes = {
-    d2: PropTypes.object
+    d2: _propTypes2.default.object
 };
 
 GroupEditor.defaultProps = {
